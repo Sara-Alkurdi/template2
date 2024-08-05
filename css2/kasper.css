@@ -1,0 +1,1110 @@
+/* start variables  */
+:root {
+    --main-color: #19c8fa;
+    --transparent-color: rgb(15 116 143 / 70%);
+    --section-padding: 100px;
+}
+/* end variables  */
+/* start global rules  */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+ul {
+    list-style: none;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Small  */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+/* Medium  */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* Large  */
+@media (min-width: 1200px) {
+    .container {
+        width: 1100px;
+    }
+}
+/* end global rules  */
+/* start components  */
+.main-heading {
+    text-align: center;
+}
+.main-heading h2 {
+    font-weight: normal;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 70px;
+    text-transform: uppercase;
+}
+.main-heading h2::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: #333;
+    bottom: -30px;
+    width: 120px;
+}
+.main-heading h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background-color: white;
+    bottom: -38px;
+}
+.main-heading p {
+    width: 550px;
+    margin: 0 auto 100px;
+    /* to not pass width of mobile screen  */
+    max-width: 100%;
+    line-height: 2;
+    color: #777;
+}
+/* end components  */
+/* start header  */
+header {
+    /* for make the header over the image  */
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* for responsive  */
+    min-height: 47.09px; 
+}
+/* for make the hr  */
+header .container::after {
+    content: ""; 
+    background-color: #a2a2a2;
+    position: absolute;
+    height: 1px;
+    /* -30px is the left & right padding we omit it to tart hr without them  */
+    width: calc(100% - 30px);
+    /* for make the blue border over the main white border i can put bottom:-1px */
+    bottom: 0;
+    left: 15px;
+}
+header .logo img {
+    height: 40px;
+}
+header nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+header nav .toggle-menu {
+    font-size: 22px;
+    color: white;
+}
+@media (min-width: 768px) {
+    header nav .toggle-menu {
+        display: none;
+    }
+}
+header nav ul {
+    display: flex;
+}
+@media (max-width: 767px) {
+    header nav ul {
+        display: none;
+    } 
+}
+header nav .toggle-menu:hover + ul {
+    /* for make override on display none so ul appear  */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgb(0 0 0 / 50%);
+}
+/* header nav .toggle-menu:hover + ul li a {
+    padding: 15px;
+}
+Or */
+header nav ul li a {
+    padding: 15px !important;
+}
+header nav ul li a {
+    padding: 40px 10px;
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    /* for make the blue border over the white border during hovering  */
+    position: relative;
+    z-index: 2;
+}
+header nav ul li a.active,
+header nav ul li a:hover {
+    color: var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+}
+header nav .form {
+    width: 40px;
+    height: 30px;
+    position: relative;
+    /* for spacing  */
+    margin-left: 30px;
+    border-left: 1px solid white;
+}
+header nav .form i {
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
+}
+/* end header  */
+/* ------start landing section ------ */
+/* here we don't need container because it is full screen  */
+.landing {
+    /* for fill the screen  */
+    min-height: 100vh;
+    /* we can use back color if image not appear  */
+    background-color: #1f2021;
+    background-image: url(../images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg);
+    background-size: cover;
+    /* for coming overlay over the landing we make the position relative  */
+    position: relative;
+}
+.landing .overlay {
+    /* for transparent  */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 50%);
+}
+.landing .text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    padding: 50px;
+    background-color: var(--transparent-color);
+    color: white;
+    /* for work on text content  */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.landing .text .content {
+    /* for giving some width in order to make flex active because content fill all the width  */
+    max-width: 500px;
+}
+@media (max-width: 767px) {
+    /* making full screen on mobile  */
+    .landing .text {
+        width: 100%;
+    }
+    /* for content not to pass the mobile width  */
+    .landing .text .content {
+        max-width: 100%;
+    } 
+}
+.landing .text .content h2 {
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.landing .text .content p {
+    line-height: 2;
+    font-size: 14px;
+}
+/* we put class change-background to target two icons and give them same tag  */
+.landing .change-background {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ddd;
+}
+@media (max-width: 767px) {
+    .landing .change-background {
+        display: none;
+    }
+}
+/* here we specify the icon  */
+.landing .fa-angle-left {
+    left: 30px;
+}
+.landing .fa-angle-right {
+    right: 30px;
+}
+.landing .bullets {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    display: flex;
+}
+.landing .bullets li {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.landing .bullets li.active {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+ /* end landing section   */
+ /* start services  */
+.services {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+@media (min-width: 768px) {
+    .services .services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    /* make spacing between column and row columns  */
+    grid-column-gap: 40px;
+    grid-row-gap: 60px;
+    }
+
+}
+.services .srv-box {
+    display: flex;
+}
+.services .srv-box i {
+    margin-right: 50px;
+}
+/* make icons,head and p coming in column in mobile    */
+@media (max-width: 767px) {
+    .services .srv-box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    /* for spacing  */
+    .services .srv-box i {
+        margin: 0 0 30px;
+    }
+}
+.services .srv-box h3 {
+    margin-bottom: 30px;
+    color: var(--main-color);
+}
+.services .srv-box p {
+    line-height: 2;
+    color: #777;
+}
+ /* end services  */
+ /* start design section  */
+.design {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    height: 600px;
+    /* to make an overlay without div  */
+    position: relative;
+    background-image: url(../images/download.jpg);
+    background-size: cover;
+    /* for make text beside image  */
+    display: flex;
+    align-items: center;
+    /* to make anything of mobile that is out of background  */
+    overflow: hidden;
+}
+/* make an overlay with before and without div in html  */
+.design::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 50%);
+}
+
+.design .image,
+.design .text {
+    /* to image and text come over the content  */
+    position: relative;
+    z-index: 2;
+    /* to distribute the space between image and text with grow flex  */
+    flex: 1;
+}
+.design .image {
+    text-align: center;
+}
+/* to disappear the picture of mobile in small screen  */
+@media (max-width: 767px) {
+    .design .image {
+        display: none;
+    }
+}
+/* make the mobile down  */
+.design .image img {
+    position: relative;
+    bottom: -150px;
+}
+.design .text {
+    color: white;
+    padding: 50px;
+    background-color: var(--transparent-color);
+}
+.design .text h2 {
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+/* to make space between links  */
+.design .text ul li {
+    padding: 15px 0;
+}
+/* to make icons for links  */
+.design .text ul li::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f108";
+    font-weight: 900;
+    margin-right: 20px;
+    position: relative;
+    top: 1px;
+
+}
+ /* end design section  */
+ /* start portfolio  */
+.portfolio {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.portfolio .shuffle {
+    display: flex;
+    justify-content: center;
+}
+/* make space between links  */
+.portfolio .shuffle li {
+    padding: 10px;
+}
+/* giving this link special color  */
+.portfolio .shuffle li.active {
+    background-color: var(--main-color);
+    color: white;
+}
+.portfolio .imgs-container {
+    display: flex;
+    /* for any extra comes down  */
+    flex-wrap: wrap;
+    /* to make space between shuffle;links and imgs container  */
+    margin-top: 60px;
+}
+.portfolio .imgs-container .box {
+    position: relative;
+    /* to disappear caption bottom -100% and when i make bottom of caption 0 they will appear */
+    overflow: hidden;
+}
+.portfolio .imgs-container .box:hover .caption {
+    /* to appear caption under picture  */
+    bottom: 0;
+}
+.portfolio .imgs-container .box:hover img {
+    transform: rotate(3deg) scale(1.1);
+}
+@media (min-width: 768px) {
+    .portfolio .imgs-container .box {
+        flex-basis: 50%;
+    }
+}
+@media (min-width: 1199px) {
+    .portfolio .imgs-container .box {
+        flex-basis: 25%;
+    }
+}
+/* not to go image outside  */
+.portfolio .imgs-container .box img {
+    max-width: 100%;
+    transition: 0.3s;
+}
+.portfolio .imgs-container .box .caption {
+    position: absolute;
+    left: 0;
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    transition: 0.3s;
+    /* for go the caption out of the screen   */
+    bottom: -100%;
+}
+.portfolio .imgs-container .box .caption h4 {
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+.portfolio .imgs-container .box .caption p {
+    color: var(--main-color);
+}
+/* link  */
+.portfolio .more {
+    background-color: var(--main-color);
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    width: fit-content;
+    margin: 30px auto;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+ /* end portfolio  */
+/* start video section  */
+.video {
+    position: relative;
+}
+/* make an overlay over video  */
+.video::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 40%);
+}
+.video video {
+    width: 100%;
+}
+/* make text over video  */
+.video .text {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 50px;
+    background-color: var(--transparent-color);
+    color: white;
+    text-align: center;
+}
+.video .text h2 {
+    margin: 0 0 30px;
+    font-weight: normal;
+}
+.video .text p {
+    margin-bottom: 30px;
+}
+.video .text button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-transform: uppercase;
+}
+/* end video section  */
+/* start about section  */
+.about {
+    /* only padding top is needed bcz image out of screen  */
+    padding-top: var(--section-padding);
+    overflow: hidden;
+    text-align: center;
+}
+.about img {
+    /* for moving image  */
+    position: relative;
+    bottom: -120px;
+    /* for restore space at top that is cutted from bottom  */
+    margin-top: -120px;
+    max-width: 100%;
+}
+@media (max-width: 767px) {
+    .about img {
+        bottom: -60px;
+        margin-top: -60px;
+    }
+}
+/* end about section  */
+/* start stats section  */
+.stats {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    /* to inherit in all element  */
+    text-align: center;
+    background-image: url(../images/stats.jpg);
+    background-size: cover;
+    position: relative;
+}
+/* make the overlay  */
+.stats::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 70%);
+}
+.stats .container {
+    /* for container appear over overlay  */
+    position: relative;
+    display: flex;
+    /* if anything extra to wrap  */
+    flex-wrap: wrap;
+}
+.stats .container .box {
+    color: white;
+    padding: 50px;
+    background-color: var(--transparent-color);
+}
+@media (max-width: 767px) {
+    /* box take all width of small screen  */
+    .stats .container .box {
+        flex-basis: 100%;
+    }
+}
+@media (min-width: 768px) {
+    /* width is divided into two boxes  */
+    .stats .container .box {
+        flex-basis: 50%;
+    }
+}
+@media (min-width: 992px) {
+    /* width is divided into four boxes  */
+    .stats .container .box {
+        flex-basis: 25%;
+    }
+}
+/* for make icon  */
+.stats .container .box i {
+    /* to maximize or minimize the size of background of icon  */
+    width: 40px;
+    height: 40px;
+    /* for tansik  */
+    display: flex;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+}
+.stats .container .box .number {
+    font-size: 50px;
+    font-weight: bold;
+    /* for make space  */
+    margin: 0 0 20px;
+}
+.stats .container .box  p {
+    font-size: 14px;
+}
+/* end stats section  */
+/* start skills  */
+.our-skills {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.our-skills .container {
+    /* since default value is block we should make it flex to get items beside each other which are testimonials & skills  */
+    display: flex;
+    /* there is 10% of space to put this space between two divs  */
+    justify-content: space-between;
+    /* if space of container decrease the increasing items down to next line  */
+    flex-wrap: wrap;
+}
+@media (min-width: 992px) {
+    /* > means the main div in the container which are testimonials & skills */
+.our-skills .container > div {
+    /* don't use 50% for make space between them  */
+    flex-basis: 45%;
+}
+}
+/* > to access directly to h3 in div  */
+.our-skills .container > div > h3 {
+    margin: 0 0 30px;
+    text-align: center;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.our-skills .container > div > p {
+    color: #777;
+    line-height: 2;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.our-skills .testimonials .content {
+    display: flex;
+    /* to not let image extend  */
+    align-items: center;
+    margin-bottom: 40px;
+}
+.our-skills .testimonials .content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 50px;
+    /* for make image inline with text  */
+    margin-top: -20px;
+}
+@media (max-width: 767px) {
+    .our-skills .testimonials .content {
+    flex-direction: column;
+    text-align: center;
+    }
+    .our-skills .testimonials .content img {
+    margin: 0 auto 20px;
+    }
+}
+.our-skills .testimonials .text {
+    line-height: 1.8;
+    /* TO MAKE A LINE UNDER p  */
+    border-bottom: 1px solid #CCC;
+}
+.our-skills .testimonials .text p {
+    color: #777;
+    text-align: right;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+/* to distribute bullets  */
+.our-skills .testimonials .bullets {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+/* to shape bullets  */
+.our-skills .testimonials .bullets li {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+/* it should make li and .active near each other for responsive  */
+.our-skills .testimonials .bullets li.active {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+.our-skills .skills .prog-holder {
+    margin-bottom: 20px;
+}
+.our-skills .skills .prog-holder h4 {
+    margin-bottom: 15px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.our-skills .skills .prog-holder .prog {
+    background-color: #dedadc;
+    height: 30px;
+}
+.our-skills .skills .prog-holder .prog span {
+    display: block;
+    background-color: var(--main-color);
+    height: 100%;
+    position: relative;
+}
+/* to make black square which holds the number over the span  */
+.our-skills .skills .prog-holder .prog span::before {
+    /* to bring that number in html  */
+    content: attr(data-progress);
+    position: absolute;
+    background-color: black;
+    color: white;
+    top: -40px;
+    right: -18px;
+    padding: 4px 0;
+    width: 40px;
+    text-align: center;
+    border-radius: 4px;
+}
+.our-skills .skills .prog-holder .prog span::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 8px;
+    border-color: black transparent transparent transparent;
+    top: -15px;
+    right: -8px;
+}
+/* end skills  */
+/* start quote  */
+.quote {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-image: url("../images/phone-1869510_1280.jpg");
+    background-size: cover;
+    /* for make an overlay by before  */
+    position: relative;
+    /* put here to inherit this characteristics for all items in this section  */
+    text-align: center;
+    color: white;
+}
+/* make a lay over the background  */
+.quote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 75%);
+}
+.quote .container {
+    /* to take the degrade of z index so container comes over the lay  */
+    position: relative;                         
+}
+/* i can change the form of quote by using after & before  */
+/* .design .text ul li::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f108";
+    font-weight: 900;
+    margin-right: 20px;
+    position: relative;
+    top: 1px;
+} */
+/* if i want to change open & close quotes by this way */
+/* q {
+    quotes: "*"  "*"  ;
+} */
+/* or by this second way  */
+q::before {
+    content: "*";
+}
+q::after {
+    content: "*";
+}
+.quote q {
+    font-size: 30px;
+    /* to get span under quote  */
+    margin-bottom: 20px;
+    display: block;
+}
+/* end quote  */
+/* start pricing  */
+.pricing {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.pricing .plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+}
+.pricing .plans .plan {
+    background-color: #FCFCFC;
+    text-align: center;
+}
+.pricing .plans .plan .head {
+    padding: 40px 20px;
+    border-top: 1px solid var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+}
+.pricing .plans .plan .head h3 {
+    font-weight: normal;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+/* it is prefer to give span class  */
+.pricing .plans .plan .head span {
+    font-size: 60px;
+    font-weight: bold;
+    /* remove position:relative in span as i put it in before and after  */
+}
+.pricing .plans .plan .head span::before {
+    content: "$";
+    font-size: 25px;
+    position: relative;
+    top: -40px;
+    /* to make distance  */
+    margin-right: 15px;
+    font-weight: normal;
+}
+.pricing .plans .plan .head span::after {
+    content: "/Mo";
+    font-size: 20px;
+    position: relative;
+    right: -15px;
+}
+.pricing .plans .plan ul {
+    border-bottom: 1px solid var(--main-color);
+}
+.pricing .plans .plan ul li {
+    padding: 20px;
+    position: relative;
+}
+/* to make border equal to content  */
+.pricing .plans .plan ul li:not(:last-child)::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    background-color: var(--main-color);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+.pricing .plans .plan .foot a {
+    display: block;
+    padding: 20px 20px;
+    text-decoration: none;
+    border: 1px solid var(--main-color);
+    width: fit-content;
+    margin: 30px auto;
+}
+.pricing .contact-text {
+    text-align: center;
+    margin: 50px auto 20px;
+    font-size: 20px;
+}
+.pricing .contact-link {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    background-color: var(--main-color);
+    text-decoration: none;
+    padding: 15px 30px;
+    color: white;
+}
+/* end pricing  */
+/* start subscribe  */
+.subscribe {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-image: url(../images/shuffle2.jpg);
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+/* it is the overlay of this section  */
+.subscribe::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 50%);
+}
+.subscribe .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 991px) {
+    .subscribe .container {
+        flex-direction: column;
+    }
+}
+.subscribe form {
+    display: flex;
+    position: relative;
+    width: 500px;
+    /* not to go up screen of mobile  */
+    max-width: 100%;
+}
+.subscribe form i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 25px;
+}
+.subscribe form input[type="email"] {
+    border: 1px solid white;
+    border-right: none;
+    background: none;
+    padding: 20px 20px 20px 60px;
+    caret-color: var(--main-color);
+    width: calc(100% - 130px);
+}
+.subscribe form input[type="submit"] {
+    width: 130px;
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-left: none;
+    text-transform: uppercase;
+}
+/* to remove outline while focus  */
+.subscribe form input[type="email"]:focus,
+.subscribe form input[type="submit"]:focus {
+    outline: none;
+}
+.subscribe form ::placeholder {
+    color: white;
+}
+.subscribe p {
+    line-height: 2;
+    margin-left: 50px;
+    text-align: center;
+}
+@media (max-width: 991px) {
+    .subscribe p {
+        margin: 30px 0 0;
+    }
+}
+/* end subscribe  */
+/* start contact  */
+.contact {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.contact .content {
+    display: flex;
+    justify-content: space-between;
+}
+@media (max-width: 767px) {
+    .contact .content {
+        flex-direction: column;
+    }
+}
+.contact .content form {
+    /* it is width that will take from space of content  */
+    flex-basis: 70%;
+}
+.contact .content form .main-input {
+    padding: 20px;
+    /* for bringing input under each other  */
+    display: block;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+    /* to fill all space of form  */
+    width: 100%;
+}
+/* to remove focus when pressing input square  */
+.contact .content form .main-input:focus {
+    outline: none;
+}
+/* to give  more space especially to main input that is existed in text area  */
+.contact .content form textarea.main-input {
+    height: 200px;
+}
+.contact .content form input[type="submit"] {
+    background-color: var(--main-color);
+    padding: 20px;
+    color: white;
+    border: none;
+    /* to bring this input at left of form using flex and margin left auto */
+    display: flex;
+    margin-left: auto;
+    text-transform: uppercase;
+    /* to know that this input is clickable  */
+    cursor: pointer;
+}
+.contact .content .info {
+    /* not 30% to let 5% as space in between  */
+    flex-basis: 25%;
+}
+/* to bring info above form in mobile screen  */
+@media (max-width: 767px) {
+    .contact .content .info {
+        order: -1;
+        text-align: center;
+    }
+}
+/* this is for all h4 that i have in this section  */
+.contact .content .info h4 {
+    text-transform: uppercase;
+    /* for making space beteen items  */
+    margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 18px;
+}
+.contact .content .info .phone {
+    /* to bring numbers under each other  */
+    display: block;
+    color: #777;
+    /* for spacing  */
+    margin-bottom: 10px;
+}
+.contact .content .info h4:nth-of-type(2) {
+    margin-top: 90px;
+}
+@media (max-width: 767px) {
+    .contact .content .info h4:nth-of-type(2) {
+        margin-top: 30px;
+    }
+}
+.contact .content .info address {
+    color: #777;
+    line-height: 2;
+}
+@media (max-width: 767px) {
+    .contact .content .info address {
+        margin-bottom: 40px;
+    }
+}
+/* end contact  */
+/* start footer  */
+.footer {
+    /* to reduce the size of footer  */
+    padding-top: calc(var(--section-padding) / 2);
+    padding-bottom: calc(var(--section-padding) / 2);
+    background-image: url("../images/shuffle4.jpg");
+    background-size: cover;
+    /* for making overlay  */
+    position: relative;
+    color: white;
+    text-align: center;
+}
+.footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 70%);
+}
+/* to bring container over the lay  */
+.footer .container {
+    position: relative;
+}
+/* choosing p that has not class copyright */
+.footer img {
+    margin-bottom: 20px;
+}
+.footer p:not(.copyright) {
+    text-transform: uppercase;
+    padding: 20px;
+    border-bottom: 1px solid white;
+    font-size: 22px;
+    width: fit-content;
+    margin: 20px auto;
+}
+.footer .social-icons i {
+    padding: 10px 15px;
+}
+.footer .copyright {
+    margin-top: 60px;
+}
+.footer .copyright span {
+    font-weight: bold;
+    color: var(--main-color);
+}
+/* end footer  */
